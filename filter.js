@@ -1,40 +1,46 @@
 
-var lista = [1, 2, 3];
-var callback = function(item) { 
-	return item === 2 };
+//test case 1
+var list = [1, 2, 3];
+var callback = function(item) { return item === 2 };
 
-var lista = [{key: 'hello', value: 'world'}, {key: 'laiva', value: 'silja line'}];
-var callback = function(item) { return item.key === 'laiva' };
+//test case 2
+var list = [{key: 'hello', value: 'world'}, {key: 'ship', value: 'silja line'}];
+var callback = function(item) { return item.key === 'ship' };
 
-function filter(lista, callback) {
-	var newLista = [];
-	for(i = 0; i < lista.length; i++) {
-		console.log("\ni: " + i);
-		console.log("callback(i): " + callback(lista[i]));
-		console.log("lista[i]: " , lista[i]);
+//filter function for non native implementation
+function filterNonNative(list, callback) {
+  var newList = [];
+    for(i = 0; i < list.length; i++) {
+      //console.log("\ni: " + i);
+      //console.log("callback(i): " + callback(list[i]));
+      //console.log("list[i]: " , list[i]);
 
-		if(callback(lista[i]) == true) {
-			newLista.push(lista[i]);
-		}
-	}
-	console.log("\nnewLista: " , newLista);
-	return newLista;
+      if(callback(list[i]) == true) {
+        newList.push(list[i]);
+      }
+    }
+  //console.log("\nnewList: " , newList);
+  return newList;
 }
 
-var filtteroityLista = filter(lista, callback);
-console.log("\nlista: " , lista);
-console.log("filtteroityLista: " , filtteroityLista);
+//test for filterNonNative function
+//list.filter = null;
 
-/*Tai...
+//filter function and two parameters
+function filter(list, callback) {
+  var filteredList;
+  //test if native filter function exists
+  if (typeof list.filter === "function") {
+    filteredList = list.filter(callback);
+  } 
+  //if there is no native filter function, use non-native filter function
+  else {
+    filteredList = filterNonNative(list, callback);
+  }
+  return filteredList;
+}
 
-const lista = [1, 2, 3];
-const callback = function(item) { return item === 2 };
-const filtteroityLista = filter(lista, callback);
+//testing filterFunction output
+console.log("list: " , list);
+console.log("filteredList: " , filter(list,callback));
 
-Tai...
-
-const lista = [{key: 'hello', value: 'world'}, {key: 'laiva', value:
-'silja line'}];
-const callback = function(item) { return item.key === 'laiva' };
-const filtteroityLista = filter(lista, callback);
-*/
