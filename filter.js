@@ -28,12 +28,10 @@ function filter(list, callback) {
     return list.filter(callback);
   } 
   //if there is no native filter function, use non-native filter function
-  else {
-    return filterNonNative(list, callback);
-  }
+  return filterNonNative(list, callback);
 }
 
-//testing filterFunction output
+//testing filter function output
 console.log("list: " , list);
 console.log("filtered list: " , filter(list,callback));
 
