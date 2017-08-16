@@ -11,15 +11,10 @@ var callback = function(item) { return item.key === 'ship' };
 function filterNonNative(list, callback) {
   var newList = [];
     for(i = 0; i < list.length; i++) {
-      //console.log("\ni: " + i);
-      //console.log("callback(i): " + callback(list[i]));
-      //console.log("list[i]: " , list[i]);
-
-      if(callback(list[i]) == true) {
+      if(callback(list[i])) {
         newList.push(list[i]);
       }
     }
-  //console.log("\nnewList: " , newList);
   return newList;
 }
 
@@ -28,19 +23,17 @@ function filterNonNative(list, callback) {
 
 //filter function and two parameters
 function filter(list, callback) {
-  var filteredList;
   //test if native filter function exists
   if (typeof list.filter === "function") {
-    filteredList = list.filter(callback);
+    return list.filter(callback);
   } 
   //if there is no native filter function, use non-native filter function
   else {
-    filteredList = filterNonNative(list, callback);
+    return filterNonNative(list, callback);
   }
-  return filteredList;
 }
 
 //testing filterFunction output
 console.log("list: " , list);
-console.log("filteredList: " , filter(list,callback));
+console.log("filtered list: " , filter(list,callback));
 
