@@ -1,7 +1,17 @@
+//actual function
 function isTruthy(item) {
   return Boolean(item);
 }
 
+//testing double negation
+function isTruthy2(item) {
+  return !!item;
+}
+
+//testing ?
+var isTruthy3 = Boolean;
+
+//test cases
 console.log(isTruthy()); // false
 console.log(isTruthy(1)); // true
 console.log(isTruthy(false)); // false
