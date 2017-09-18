@@ -1,4 +1,3 @@
+## brainfuck code printing "Paula"
+
 ++++++++[>+++[>+++>++++>+++++>+++++<<<<-]>+>>>--[<]<-]>>.>+.>---.>++++.<<.
-
-
-### ^ brainfuck code printing "Paula" ^ ###
