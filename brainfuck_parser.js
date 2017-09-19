@@ -6,8 +6,6 @@ function brainfuck_parser(code) {
   var loopStart = [];  
   var loopEnd = []; 
 
-  var j = 0;
-
   for (i = 0; i < code.length ; i++) {
 
     //console.log("cells: " , i, cells)
@@ -66,7 +64,6 @@ function brainfuck_parser(code) {
       toPrint += String.fromCharCode(cells[cellIndex]);
       //console.log("toPrint: " , toPrint)
     }
-    j++;
   }
   return toPrint;
 }
