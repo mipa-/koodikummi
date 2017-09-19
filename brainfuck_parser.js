@@ -1,10 +1,11 @@
-function brainfuck_parser(code) {
+function brainfuck_parser(code,input) {
 
   var cells = [];
   var cellIndex = 0;
   var toPrint = '';
   var loopStart = [];  
-  var loopEnd = []; 
+  var loopEnd = [];
+  var inputs = 0;
 
   for (i = 0; i < code.length ; i++) {
 
@@ -64,14 +65,21 @@ function brainfuck_parser(code) {
       toPrint += String.fromCharCode(cells[cellIndex]);
       //console.log("toPrint: " , toPrint)
     }
+
+    else if (code.charAt(i) === ',') {
+      cells[cellIndex] = input.charCodeAt(inputs);
+      inputs++;
+    }
   }
   return toPrint;
 }
 
 var Paula = "++++++++[>+++[>+++>++++>+++++>+++++<<<<-]>+>>>--[<]<-]>>.>+.>---.>++++.<<.";
+var Paaba = "++++++++[>+++[>+++>++++>+++++>+++++<<<<-]>+>>>--[<]<-]>>.>+.>---,.>,.>++++.<<.";
 var HelloWorld = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
 
 console.log(brainfuck_parser(Paula))
+console.log(brainfuck_parser(Paaba,'ab'))
 console.log(brainfuck_parser(HelloWorld))
 
 
