@@ -1,0 +1,80 @@
+<style>
+
+body {
+  //text-align: center;
+}
+
+.buttons {
+  //float: left;
+  //clear: left;
+  margin-top: 100px;
+}
+
+button {
+  //clear: left;
+  display: block;
+}
+
+#elevator {
+  height: 150px;
+  width: 100px;
+  border: 5px solid black;
+  margin: 0 auto;
+}
+
+.elevatorUp {
+  height: 150px;
+  width: 100px;
+  border: 5px solid black;
+  margin: 0 auto;
+  animation: MoveUp 5s linear;
+}
+
+@keyframes MoveUp {
+  from {
+    margin-top: 300px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+.elevatorDown {
+  height: 150px;
+  width: 100px;
+  border: 5px solid black;
+  margin: 0 auto;
+  animation: MoveDown 5s linear forwards;
+}
+
+@keyframes MoveDown {
+  from {
+    margin-top: 0px;
+  }
+  to {
+    margin-top: 300px;
+  }
+}
+
+</style>
+
+<body>
+  <div class="buttons">
+    <button id="upBtn">Up</button>
+    <button id="downBtn">Down</button>
+  </div>
+  <div class="elevatorUp" id="elevator">
+    <p></p>
+  </div>
+</body>
+
+<script>
+  document.getElementById("upBtn").onclick = function(e){
+    console.log("Move Up")
+    document.getElementById("elevator").classList.replace('elevatorDown','elevatorUp');
+  }
+  document.getElementById("downBtn").onclick = function(e){
+    console.log("Move Down")
+    document.getElementById("elevator").classList.replace('elevatorUp','elevatorDown');
+  }
+</script>
